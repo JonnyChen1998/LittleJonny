@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Grid, Row, Col} from 'react-bootstrap';
 import {AppBar, TextField, RaisedButton} from 'material-ui';
+import FlatButton from 'material-ui/FlatButton';
 import * as movieActions from './movie-browser.actions';
 import * as movieHelpers from './movie-browser.helpers';
 import MovieList from './movie-list/movie-list.component';
@@ -49,26 +50,44 @@ class MovieBrowser extends React.Component {
 
     return (
       <div>
-        <AppBar title='Movie Browser' />
+        <AppBar style={{background: '#750000', }} title='酷优视频'>
+
+          <div style={{display: 'flex',justifyContent:'center', alignItems:'center'}}>
+            <FlatButton style={styles.navButton} variant="contained" color="secondary">
+              热门
+            </FlatButton>
+            <FlatButton style={styles.navButton} variant="contained" color="secondary">
+              日本AV
+            </FlatButton>
+            <FlatButton style={styles.navButton} variant="contained" color="secondary">
+              欧美AV
+            </FlatButton>
+          </div>
+        </AppBar>
+
         <Grid>
           <Row>
-            <p>Search will go here</p>
           </Row>
           <Row>
-            <MovieList movies={movies} isLoading={topMovies.isLoading} />
+            <MovieList movies={movies} isLoading={topMovies.isLoading}/>
           </Row>
         </Grid>
-        <MovieModal />
+        <MovieModal/>
       </div>
     );
   }
 }
 
+const styles= {
+  navButton: {
+    color: 'white'
+  }
+}
 export default connect(
   // Map nodes in our state to a properties of our component
   (state) => ({
     topMovies: state.movieBrowser.topMovies
   }),
   // Map action creators to properties of our component
-  { ...movieActions }
+  {...movieActions}
 )(MovieBrowser);

@@ -10,10 +10,17 @@ const styles = {
     maxHeight: 394,
     overflow: 'hidden'
   },
+  movieObj: {
+    height: 165,
+    margin: 5,
+    marginBottom: 10
+  },
   card: {
     cursor: 'pointer',
-    height: 400,
-    overflow: 'hidden'
+    height: 136,
+    overflow: 'hidden',
+    marginBottom: 5
+
   },
   bgImage: {
     width: '100%'
@@ -28,36 +35,35 @@ class MovieCardComponent extends React.Component {
       isMouseOver: false
     };
   }
-  
+
   render() {
-    const {movie, openMovieModal} = this.props;
+    const {movieObject, openMovieModal} = this.props;
     // The CardTitle.subtitle won't render if it's null
-    const subtitle = this.state.isMouseOver ? movie.overview : null;
+    const title = movieObject[2].length > 28 ? movieObject[2].slice(0, 26) + '...' : movieObject[2];
 
     return (
-      <Card
-        style={styles.card}
-        onMouseOver={() => this.setState({isMouseOver: true})}
-        onMouseLeave={() => this.setState({isMouseOver: false})}
-        onClick= {() => openMovieModal(movie.id)}
-      >
-        <CardMedia
-          style={styles.cardMedia}
-          overlay={
-            <CardTitle
-              title={movie.title} 
-              subtitle={subtitle} 
-            />
-          }
+      <div style={styles.movieObj}>
+        <Card
+          style={styles.card}
+          onMouseOver={() => this.setState({isMouseOver: true})}
+          onMouseLeave={() => this.setState({isMouseOver: false})}
+          onClick={() => {
+          }}
         >
-          <img style={styles.bgImage} src={movie.poster_path} />
-        </CardMedia>
-      </Card>
+          <img style={styles.bgImage} src={movieObject[1]}/>
+
+        </Card>
+        <div>
+          <p style={{fontSize: 18, height: 43, fontWeight: 'bold'}}> {title} </p>
+          <p style={{'text-align': 'center', fontSize: 14,}}> {'观看次数 ' + movieObject[5]} </p>
+
+        </div>
+      </div>
     );
   }
 }
 
 export default connect(
   () => ({}),
-  { openMovieModal }
+  {openMovieModal}
 )(MovieCardComponent);
