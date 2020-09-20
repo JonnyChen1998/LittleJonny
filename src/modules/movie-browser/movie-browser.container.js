@@ -50,7 +50,7 @@ class MovieBrowser extends React.Component {
 
     return (
       <div>
-        <AppBar style={{background: '#750000', }} title='酷优视频'>
+        <AppBar style={{background: '#750000', height: 50, alignItems:'center'}} title='酷优视频'>
 
           <div style={{display: 'flex',justifyContent:'center', alignItems:'center'}}>
             <FlatButton style={styles.navButton} variant="contained" color="secondary">
@@ -72,7 +72,6 @@ class MovieBrowser extends React.Component {
             <MovieList movies={movies} isLoading={topMovies.isLoading}/>
           </Row>
         </Grid>
-        <MovieModal/>
       </div>
     );
   }
