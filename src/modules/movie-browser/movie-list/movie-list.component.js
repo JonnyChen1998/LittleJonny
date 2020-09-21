@@ -6,7 +6,7 @@ import jsonData from '../../../allData.json'
 
 const styles = {
   movieColumn: {
-    marginBottom: 50
+    // marginBottom: '1%'
   },
   row: {
     // marginBottom: 50

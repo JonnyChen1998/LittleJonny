@@ -50,7 +50,9 @@ class MovieBrowser extends React.Component {
 
     return (
       <div>
-        <AppBar style={{background: '#750000', height: 50, alignItems:'center'}} title='酷优视频'>
+        <AppBar style={{ background: '#750000', height: 50, alignItems:'center'}}
+                title={<div style={{fontSize: 20}}> 酷优视频 </div>}
+        >
 
           <div style={{display: 'flex',justifyContent:'center', alignItems:'center'}}>
             <FlatButton style={styles.navButton} variant="contained" color="secondary">
