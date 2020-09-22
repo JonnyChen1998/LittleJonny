@@ -7,7 +7,7 @@ import {isMobile} from 'react-device-detect';
 
 import Modal from 'react-awesome-modal';
 
-const closeBtnEdgeDis = isMobile ? -2 : -10;
+const closeBtnEdgeDis = -10;
 
 
 const styles = {
@@ -104,6 +104,18 @@ class MovieCardComponent extends React.Component {
     });
   };
 
+  renderCloseBtn = () => {
+    if (!isMobile) {
+      return (
+        <button style={styles.closeBtn}
+                onClick={this.closeModel}
+        >
+          <img style={{width: 16, height: 16}} src={iconClose}/>
+        </button>
+      )
+    }
+  };
+
   renderModel = (videoUrl) => {
     if (this.state.isShowPopup) {
       console.log('showIframe(): ' + this.state.isShowPopup);
@@ -114,13 +126,15 @@ class MovieCardComponent extends React.Component {
           width="400"
           height="300"
           effect="fadeInUp"
-          // onClickAway={() => this.closeModel()}
+          onClickAway={() => {
+            if (isMobile) {
+              this.closeModel()
+            }
+          }
+          }
         >
-          <button style={styles.closeBtn}
-                  onClick={this.closeModel}
-          >
-            <img style={{width: 16, height: 16}} src={iconClose}/>
-          </button>
+          {this.renderCloseBtn()}
+
           <iframe
             style={styles.iframe}
             title="Modal Embed"

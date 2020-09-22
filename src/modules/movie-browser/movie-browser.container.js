@@ -1,14 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Grid, Row, Col} from 'react-bootstrap';
-import {AppBar, TextField, RaisedButton} from 'material-ui';
+import {AppBar, TextField} from 'material-ui';
 import FlatButton from 'material-ui/FlatButton';
 import * as movieActions from './movie-browser.actions';
-import * as movieHelpers from './movie-browser.helpers';
 import MovieList from './movie-list/movie-list.component';
 import * as scrollHelpers from '../common/scroll.helpers';
 import MovieModal from './movie-modal/movie-modal.container';
 import jsonData from '../../allData.json'
+import {isMobile} from 'react-device-detect';
 
 class MovieBrowser extends React.Component {
   constructor(props) {
@@ -59,9 +59,9 @@ class MovieBrowser extends React.Component {
     // const movies = movieHelpers.getMoviesList(topMovies.response);
 
     return (
-      <div>
+      <div style={{width: '100%', overflowX: 'hidden'}}>
         <AppBar style={{ background: '#750000', height: 50, alignItems:'center'}}
-                title={<div style={{fontSize: '2vw', fontWeight: 'bold' }}> KUYO </div>}
+                title={<div style={{fontSize: webTitleSize, fontWeight: 'bold' }}> KUYO </div>}
         >
 
           <div style={{display: 'flex',justifyContent:'center', alignItems:'center'}}>
@@ -95,6 +95,7 @@ class MovieBrowser extends React.Component {
   }
 }
 
+const webTitleSize = isMobile ? '4vw' : '2vw';
 const styles= {
   navButton: {
     color: 'white',
