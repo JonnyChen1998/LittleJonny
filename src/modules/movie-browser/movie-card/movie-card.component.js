@@ -164,7 +164,7 @@ class MovieCardComponent extends React.Component {
         <div>
           <p style={{fontSize: 18, height: 37, fontWeight: 'bold'}}> {title} </p>
           <div>
-            <p style={{'text-align': 'center', fontSize: 14,}}>
+            <p style={{'textAlign': 'center', fontSize: 14,}}>
               {'观看次数  ' + movieObject[5] + ' '}
               <a> <img style={{width: 20, height: 20, marginBottom: 5}} src={iconThumbUp}/> </a>
             </p>

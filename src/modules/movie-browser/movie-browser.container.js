@@ -61,7 +61,7 @@ class MovieBrowser extends React.Component {
     return (
       <div>
         <AppBar style={{ background: '#750000', height: 50, alignItems:'center'}}
-                title={<div style={{fontSize: '2vw' }}> YOKU </div>}
+                title={<div style={{fontSize: '2vw', fontWeight: 'bold' }}> KUYO </div>}
         >
 
           <div style={{display: 'flex',justifyContent:'center', alignItems:'center'}}>
@@ -87,7 +87,7 @@ class MovieBrowser extends React.Component {
           <Row>
           </Row>
           <Row>
-            <MovieList movies={this.jsonData[this.state.selectMovieClass]} isLoading={topMovies.isLoading}/>
+            <MovieList movies={this.jsonData[this.state.selectMovieClass]} isLoading={false}/>
           </Row>
         </Grid>
       </div>
