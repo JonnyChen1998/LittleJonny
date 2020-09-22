@@ -3,9 +3,11 @@ import {connect} from 'react-redux';
 import {Card, CardMedia} from 'material-ui';
 import iconThumbUp from '../../../images/thumb_up.png'
 import iconClose from '../../../images/close.png'
+import {isMobile} from 'react-device-detect';
 
-import 'reactjs-popup/dist/index.css';
 import Modal from 'react-awesome-modal';
+
+const closeBtnEdgeDis = isMobile ? -2 : -10;
 
 
 const styles = {
@@ -59,19 +61,15 @@ const styles = {
     // width: 600,
     // transform             : 'translate(-50%, -50%)',
 
-
-    // background: 'green',
-
   },
   iframe: {
-    // position: 'absolute',
     width: '100%',
     height: '100%'
   },
   closeBtn: {
     position: 'absolute',
-    top: -4,
-    right: -4,
+    top: closeBtnEdgeDis,
+    right: closeBtnEdgeDis,
     background: 'transparent',
     border: 'none'
   }
